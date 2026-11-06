@@ -1,4 +1,4 @@
-<p align="center"><img src="img/logo.png" width="96" alt="Kaplumbağa"></p>
+<p align="center"><img src="logo.png" width="96" alt="Kaplumbağa"></p>
 
 <h1 align="center">Kaplumbağa – Sınav Oturma Planı</h1>
 <p align="center"><b>Exam Seating Plan</b> · v1.0 · Windows 7 / 8 / 10 / 11 · Ücretsiz / Free</p>
@@ -8,12 +8,12 @@
   <a href="Kaplumbaga-1.0-portable.zip"><b>⬇ Taşınabilir / Portable .zip</b></a> (124 KB)
 </p>
 
-![Kaplumbağa](img/plan_tr.png)
+![Kaplumbağa](plan_tr.png)
 
 ## Türkçe
 
-Ortak sınavlar için **derslik oturma planı** ve **sınıf listelerini** hazırlayan küçük, ücretsiz bir program.
-Reklamsız ve internet gerekmez.
+Ortak sınavlar için **derslik oturma planı** ve **sınıf listelerini** dakikalar içinde hazırlayan küçük, ücretsiz bir program.
+Reklam yok, internet gerekmez; veriler bilgisayarınızda kalır.
 
 - Öğrencileri **Excel (.xlsx, .xls), CSV ve e-Okul** listelerinden alır.
 - **Aynı sınava, sınıfa veya seviyeye** giren öğrencileri yan yana ve önlü-arkalı oturtmaz.
@@ -29,11 +29,11 @@ Reklamsız ve internet gerekmez.
 
 ## English
 
-A small free tool that builds **exam seating plans** and **class lists** for school exams.
-No ads and works offline.
+A small free tool that builds **exam seating plans** and **class lists** for school exams in minutes.
+No ads, works offline; your data stays on your computer.
 
 - Imports students from **Excel (.xlsx, .xls), CSV and Turkish e-Okul** lists.
-- Keeps students with the **same exam, class or grade** apart side by side and front/back.
+- Keeps students with the **same exam, class or grade** apart — side by side and front/back.
 - A "where do I sit" list for every class, a colour **seating chart** for every classroom with signature space and counts per exam.
 - Desk labels, master list and summary · **PDF, Word, Excel, CSV** · Turkish and English.
 
@@ -51,8 +51,8 @@ In the portable version keep `Kaplumbaga.exe` and `Kaplumbaga.exe.config` togeth
 
 **SHA-256**
 ```
-87a09a90dd4f7f1c3641bd97b706e61f6c86344b20f677e9d4c0545065013013  Kaplumbaga-Setup-1.0.exe
-ebf54a234f26810d65c648b0a359c10aba8f95522d4d8b423b20473fd6864d5b  Kaplumbaga-1.0-portable.zip
+88fbf9f76742f659e42dafc0554974699bd4e5fe82694fd1704df1c734dcfec9  Kaplumbaga-Setup-1.0.exe
+4faa7ad171bd54c6ddc9fa4879775b101e51c3cc4e4c5b40f49529996b3d7409  Kaplumbaga-1.0-portable.zip
 ```
 
 ## İletişim / Contact
