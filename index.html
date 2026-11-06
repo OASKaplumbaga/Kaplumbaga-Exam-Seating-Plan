@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="tr" data-lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaplumbağa – Sınav Oturma Planı</title>
+<meta name="description" content="Ücretsiz sınav oturma planı programı: derslik oturma şemaları, sınıf listeleri, PDF / Word / Excel çıktı. Free exam seating plan generator for schools.">
+<link rel="icon" href="favicon.ico">
+<style>
+  :root {
+    --desk: #008080;
+    --face: #c0c0c0;
+    --light: #ffffff;
+    --shadow: #808080;
+    --dark: #000000;
+    --title1: #000080;
+    --title2: #1084d0;
+    --text: #000000;
+    --muted: #404040;
+    --paper: #ffffff;
+    --link: #0000ee;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--desk); }
+  body {
+    margin: 0; padding: 24px 16px 40px; background: var(--desk); color: var(--text);
+    font: 13px/1.5 Tahoma, "MS Sans Serif", Verdana, Geneva, sans-serif;
+  }
+  html[data-lang="tr"] .en, html[data-lang="en"] .tr { display: none !important; }
+
+  /* --- classic window --- */
+  .win {
+    max-width: 920px; margin: 0 auto 20px; background: var(--face);
+    border: 2px solid; border-color: var(--light) var(--dark) var(--dark) var(--light);
+    box-shadow: inset -1px -1px var(--shadow), inset 1px 1px #dfdfdf;
+  }
+  .titlebar {
+    display: flex; align-items: center; gap: 6px; padding: 3px 4px 3px 6px;
+    background: linear-gradient(90deg, var(--title1), var(--title2)); color: #fff; font-weight: bold;
+  }
+  .titlebar img { width: 16px; height: 16px; }
+  .titlebar .t { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lang { display: flex; gap: 2px; }
+  .lang button, .btn {
+    font: inherit; color: var(--text); background: var(--face); cursor: pointer;
+    border: 2px solid; border-color: var(--light) var(--dark) var(--dark) var(--light);
+    box-shadow: inset -1px -1px var(--shadow), inset 1px 1px #dfdfdf;
+  }
+  .lang button { min-width: 34px; padding: 0 6px; font-size: 11px; font-weight: bold; line-height: 16px; }
+  .lang button[aria-pressed="true"], .btn:active {
+    border-color: var(--dark) var(--light) var(--light) var(--dark);
+    box-shadow: inset 1px 1px var(--shadow), inset -1px -1px #dfdfdf;
+  }
+  .menubar { display: flex; flex-wrap: wrap; gap: 2px 14px; padding: 3px 8px; border-bottom: 1px solid var(--shadow); }
+  .menubar a { color: var(--text); text-decoration: none; }
+  .menubar a:hover { background: var(--title1); color: #fff; }
+  .body { padding: 16px; }
+
+  /* --- hero --- */
+  .hero { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .logo { width: 96px; height: 96px; background: var(--paper); flex: none;
+    border: 2px solid; border-color: var(--shadow) var(--light) var(--light) var(--shadow); }
+  .hero h1 { margin: 0; font-size: 26px; line-height: 1.2; }
+  .hero .sub { margin: 2px 0 6px; font-size: 15px; }
+  .hero .tag { margin: 0; color: var(--muted); }
+  .hero .text { flex: 1; min-width: 240px; }
+
+  .downloads { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 6px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; text-decoration: none; }
+  .btn.primary { outline: 1px solid var(--dark); outline-offset: -5px; font-weight: bold; }
+  .btn small { display: block; font-weight: normal; color: var(--muted); }
+  .btn .ico { width: 32px; height: 32px; image-rendering: pixelated; }
+  .meta { color: var(--muted); font-size: 12px; }
+
+  /* --- group boxes --- */
+  fieldset { margin: 18px 0 0; padding: 10px 14px 12px; border: 2px groove #f0f0f0; }
+  legend { padding: 0 4px; font-weight: bold; }
+  ul { margin: 4px 0; padding-left: 20px; }
+  li { margin: 2px 0; }
+  ol { margin: 4px 0; padding-left: 22px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+
+  .shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .shots figure { margin: 0; }
+  .shots a { display: block; background: var(--paper); padding: 2px;
+    border: 2px solid; border-color: var(--shadow) var(--light) var(--light) var(--shadow); }
+  .shots img { display: block; width: 100%; height: auto; }
+  .shots figcaption { margin-top: 4px; font-size: 12px; color: var(--muted); }
+
+  .note { background: #ffffe1; border: 1px solid var(--dark); padding: 8px 10px; margin-top: 8px; }
+  code, .hash { font-family: "Lucida Console", Consolas, monospace; font-size: 11px; word-break: break-all; }
+  .hash { background: var(--paper); padding: 4px 6px; display: block; margin: 2px 0 6px;
+    border: 2px solid; border-color: var(--shadow) var(--light) var(--light) var(--shadow); }
+  a { color: var(--link); }
+
+  .statusbar { display: flex; flex-wrap: wrap; gap: 4px; padding: 3px; border-top: 1px solid var(--shadow); font-size: 12px; }
+  .statusbar span { padding: 1px 6px; border: 1px solid; border-color: var(--shadow) var(--light) var(--light) var(--shadow); }
+  .statusbar span:first-child { flex: 1; }
+
+  @media (max-width: 640px) {
+    body { padding: 12px 8px 30px; }
+    .body { padding: 12px; }
+    .two, .shots { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 22px; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="win" role="main">
+  <div class="titlebar">
+    <img src="favicon.ico" alt="">
+    <span class="t"><span class="tr">Kaplumbağa – Sınav Oturma Planı</span><span class="en">Kaplumbağa – Exam Seating Plan</span></span>
+    <div class="lang" role="group" aria-label="Dil / Language">
+      <button type="button" data-set="tr">TR</button>
+      <button type="button" data-set="en">EN</button>
+    </div>
+  </div>
+  <nav class="menubar">
+    <a href="#indir"><span class="tr">İndir</span><span class="en">Download</span></a>
+    <a href="#ozellikler"><span class="tr">Özellikler</span><span class="en">Features</span></a>
+    <a href="#ekran"><span class="tr">Ekran görüntüleri</span><span class="en">Screenshots</span></a>
+    <a href="#kullanim"><span class="tr">Kullanım</span><span class="en">How to use</span></a>
+    <a href="#uyari"><span class="tr">Windows uyarısı</span><span class="en">Windows warning</span></a>
+    <a href="#iletisim"><span class="tr">İletişim</span><span class="en">Contact</span></a>
+  </nav>
+
+  <div class="body">
+    <section class="hero" id="indir">
+      <img class="logo" src="img/logo.png" width="96" height="96" alt="Kaplumbağa">
+      <div class="text">
+        <h1>Kaplumbağa</h1>
+        <p class="sub">
+          <span class="tr">Sınav oturma planı ve sınıf listeleri</span>
+          <span class="en">Exam seating plans and class lists</span>
+        </p>
+        <p class="tag">
+          <span class="tr">Ücretsiz · Reklamsız · İnternet gerekmez · Windows 7, 8, 10, 11</span>
+          <span class="en">Free · No ads · Works offline · Windows 7, 8, 10, 11</span>
+        </p>
+      </div>
+    </section>
+
+    <div class="downloads">
+      <a class="btn primary" href="Kaplumbaga-Setup-1.0.exe" download>
+        <img class="ico" src="favicon.ico" alt="">
+        <span><span class="tr">Kurulum dosyasını indir</span><span class="en">Download the installer</span>
+          <small>Kaplumbaga-Setup-1.0.exe · 2.1 MB</small></span>
+      </a>
+      <a class="btn" href="Kaplumbaga-1.0-portable.zip" download>
+        <span><span class="tr">Taşınabilir sürüm (.zip)</span><span class="en">Portable version (.zip)</span>
+          <small><span class="tr">Kurulum yok, aç ve çalıştır</span><span class="en">No install: unzip and run</span> · 124 KB</small></span>
+      </a>
+    </div>
+    <p class="meta">
+      <span class="tr">Sürüm 1.0 · 2026-11-06 · Kurulum yönetici izni istemez.</span>
+      <span class="en">Version 1.0 · 2026-11-06 · The installer needs no administrator rights.</span>
+      <a href="#uyari"><span class="tr">İndirirken uyarı mı çıktı?</span><span class="en">Got a warning when opening it?</span></a>
+    </p>
+
+    <fieldset id="ozellikler">
+      <legend><span class="tr">Neler yapar?</span><span class="en">What it does</span></legend>
+      <div class="two">
+        <ul class="tr">
+          <li>Öğrencileri Excel (.xlsx, .xls), CSV ve <b>e-Okul</b> listelerinden alır; birden çok dosya, sürükle-bırak veya Excel'den yapıştır.</li>
+          <li>Dersliklerinizi bir kez girin: sıra sayısı, bir sırada kaç kişi, yan yana kaç sıra.</li>
+          <li><b>Aynı sınava, sınıfa veya seviyeye</b> giren öğrencileri yan yana ve önlü-arkalı oturtmaz.</li>
+          <li>Dersliklere dengeli dağıtır; iki koltuğa tıklayarak yer değiştirebilirsiniz.</li>
+        </ul>
+        <ul class="tr">
+          <li>Her sınıf için "sınav yerleri" listesi.</li>
+          <li>Her derslik için renkli oturma şeması, imza yerleri ve sınava göre öğrenci sayıları.</li>
+          <li>Sıra etiketleri, genel liste ve özet.</li>
+          <li><b>PDF, Word, Excel ve CSV</b> çıktı · Türkçe ve İngilizce.</li>
+        </ul>
+        <ul class="en">
+          <li>Imports students from Excel (.xlsx, .xls), CSV and Turkish e-Okul lists — several files, drag &amp; drop, or paste from Excel.</li>
+          <li>Enter your classrooms once: benches, seats per bench, benches side by side.</li>
+          <li>Keeps students with the <b>same exam, class or grade</b> apart — side by side and front/back.</li>
+          <li>Spreads students evenly over rooms; swap any two seats with two clicks.</li>
+        </ul>
+        <ul class="en">
+          <li>A "where do I sit" list for every class.</li>
+          <li>A colour seating chart for every classroom, with signature space and student counts per exam.</li>
+          <li>Desk labels, a master list and a summary.</li>
+          <li>Output as <b>PDF, Word, Excel and CSV</b> · Turkish and English.</li>
+        </ul>
+      </div>
+    </fieldset>
+
+    <fieldset id="ekran">
+      <legend><span class="tr">Ekran görüntüleri</span><span class="en">Screenshots</span></legend>
+      <div class="shots">
+        <figure>
+          <a href="img/plan_tr.png" class="tr"><img src="img/plan_tr.png" width="1200" height="825" loading="lazy" alt="Plan sekmesi: renkli oturma şeması"></a>
+          <a href="img/plan_en.png" class="en"><img src="img/plan_en.png" width="1200" height="825" loading="lazy" alt="Plan tab: colour seating chart"></a>
+          <figcaption><span class="tr">Plan: aynı sınava girenler yan yana oturmaz.</span><span class="en">Plan: students with the same exam never sit together.</span></figcaption>
+        </figure>
+        <figure>
+          <a href="img/rooms_tr.png" class="tr"><img src="img/rooms_tr.png" width="1200" height="825" loading="lazy" alt="Derslikler sekmesi"></a>
+          <a href="img/rooms_en.png" class="en"><img src="img/rooms_en.png" width="1200" height="825" loading="lazy" alt="Classrooms tab"></a>
+          <figcaption><span class="tr">Derslikler ve sıra düzeni.</span><span class="en">Classrooms and bench layout.</span></figcaption>
+        </figure>
+        <figure>
+          <a href="img/import_tr.png" class="tr"><img src="img/import_tr.png" width="950" height="750" loading="lazy" alt="Öğrenci alma penceresi"></a>
+          <a href="img/import_en.png" class="en"><img src="img/import_en.png" width="950" height="750" loading="lazy" alt="Import window"></a>
+          <figcaption><span class="tr">e-Okul / Excel listesini alma.</span><span class="en">Importing an e-Okul / Excel list.</span></figcaption>
+        </figure>
+        <figure>
+          <a href="img/output_tr.png" class="tr"><img src="img/output_tr.png" width="1200" height="825" loading="lazy" alt="Çıktı sekmesi"></a>
+          <a href="img/output_en.png" class="en"><img src="img/output_en.png" width="1200" height="825" loading="lazy" alt="Output tab"></a>
+          <figcaption><span class="tr">PDF, Word, Excel, CSV çıktı seçenekleri.</span><span class="en">PDF, Word, Excel and CSV output options.</span></figcaption>
+        </figure>
+      </div>
+    </fieldset>
+
+    <fieldset id="kullanim">
+      <legend><span class="tr">Nasıl kullanılır?</span><span class="en">How to use</span></legend>
+      <ol class="tr">
+        <li><b>Derslikler:</b> derslik adı, sıra sayısı, bir sırada kaç kişi oturduğu.</li>
+        <li><b>Öğrenciler:</b> Excel / CSV / e-Okul listelerini alın.</li>
+        <li><b>Sınıflar:</b> her sınıfın sınavını yazın.</li>
+        <li><b>Plan:</b> okul ve sınav adını girip <b>Plan Oluştur</b>'a basın.</li>
+        <li><b>Çıktı:</b> biçimleri seçip <b>Dosyaları Oluştur</b>'a basın.</li>
+      </ol>
+      <ol class="en">
+        <li><b>Classrooms:</b> name, number of benches, seats per bench.</li>
+        <li><b>Students:</b> import your Excel / CSV / e-Okul lists.</li>
+        <li><b>Classes:</b> type each class's exam.</li>
+        <li><b>Plan:</b> enter the school and exam title, press <b>Generate</b>.</li>
+        <li><b>Output:</b> pick the formats, press <b>Create Files</b>.</li>
+      </ol>
+    </fieldset>
+
+    <fieldset id="uyari">
+      <legend><span class="tr">"Windows bilgisayarınızı korudu" uyarısı</span><span class="en">"Windows protected your PC" warning</span></legend>
+      <p class="tr">Kaplumbağa ücretsiz ve küçük bir program olduğu için ücretli bir dijital imzası yok. Bu yüzden Windows ilk açılışta bir uyarı gösterebilir. Program güvenlidir; çalıştırmak için:</p>
+      <p class="en">Kaplumbağa is a small free program without a paid digital signature, so Windows may show a warning the first time. The program is safe; to run it:</p>
+      <ol class="tr">
+        <li>Uyarıda <b>Ek bilgi</b>'ye tıklayın.</li>
+        <li><b>Yine de çalıştır</b> düğmesine basın.</li>
+      </ol>
+      <ol class="en">
+        <li>Click <b>More info</b> in the warning.</li>
+        <li>Press <b>Run anyway</b>.</li>
+      </ol>
+      <div class="note">
+        <span class="tr">Windows 7'de ek bir şey gerekmez (.NET 3.5 hazır gelir). Windows 10/11'de .NET 4 kullanılır. Taşınabilir sürümde <code>Kaplumbaga.exe</code> ile <code>Kaplumbaga.exe.config</code> aynı klasörde kalmalıdır.</span>
+        <span class="en">Nothing else is needed on Windows 7 (.NET 3.5 is built in). Windows 10/11 use the built-in .NET 4. In the portable version keep <code>Kaplumbaga.exe</code> and <code>Kaplumbaga.exe.config</code> in the same folder.</span>
+      </div>
+      <p>
+        <span class="tr">İndirdiğiniz dosyanın değiştirilmediğini kontrol etmek için SHA-256 değerleri:</span>
+        <span class="en">SHA-256 checksums, to check that your download was not altered:</span>
+      </p>
+      <span class="hash">87a09a90dd4f7f1c3641bd97b706e61f6c86344b20f677e9d4c0545065013013 &nbsp;Kaplumbaga-Setup-1.0.exe</span>
+      <span class="hash">ebf54a234f26810d65c648b0a359c10aba8f95522d4d8b423b20473fd6864d5b &nbsp;Kaplumbaga-1.0-portable.zip</span>
+    </fieldset>
+
+    <fieldset id="iletisim">
+      <legend><span class="tr">İletişim ve lisans</span><span class="en">Contact and license</span></legend>
+      <p>
+        <span class="tr">Sorularınız, hata bildirimleri ve önerileriniz için:</span>
+        <span class="en">Questions, bug reports and ideas:</span>
+        <a href="mailto:kaplumbaga.app@gmail.com">kaplumbaga.app@gmail.com</a>
+      </p>
+      <p>
+        <span class="tr"><b>OAS</b> tarafından yapıldı. <b>MIT Lisansı</b> ile ücretsizdir: kullanabilir, kopyalayabilir, değiştirebilir ve paylaşabilirsiniz.
+          Program kişisel veri toplamaz ve internete bağlanmaz.</span>
+        <span class="en">Made by <b>OAS</b>. Free under the <b>MIT License</b>: use, copy, change and share it.
+          The program collects no personal data and never connects to the internet.</span>
+      </p>
+    </fieldset>
+  </div>
+
+  <div class="statusbar">
+    <span><span class="tr">Yavaş ama emin adımlarla.</span><span class="en">Slow and steady.</span></span>
+    <span>v1.0</span>
+    <span>© 2026 OAS</span>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement, saved = null;
+    try { saved = localStorage.getItem("kplLang"); } catch (e) {}
+    var nav = (navigator.language || "tr").toLowerCase();
+    set(saved || (nav.indexOf("tr") === 0 ? "tr" : "en"));
+    var buttons = document.querySelectorAll("[data-set]");
+    for (var i = 0; i < buttons.length; i++)
+      buttons[i].addEventListener("click", function () { set(this.getAttribute("data-set")); });
+
+    function set(lang) {
+      root.setAttribute("data-lang", lang);
+      root.setAttribute("lang", lang);
+      document.title = lang === "tr" ? "Kaplumbağa – Sınav Oturma Planı" : "Kaplumbağa – Exam Seating Plan";
+      var b = document.querySelectorAll("[data-set]");
+      for (var j = 0; j < b.length; j++) b[j].setAttribute("aria-pressed", b[j].getAttribute("data-set") === lang);
+      try { localStorage.setItem("kplLang", lang); } catch (e) {}
+    }
+  })();
+</script>
+</body>
+</html>
