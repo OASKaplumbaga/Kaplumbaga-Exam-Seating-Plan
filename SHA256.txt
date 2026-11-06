@@ -1,2 +1,2 @@
-4faa7ad171bd54c6ddc9fa4879775b101e51c3cc4e4c5b40f49529996b3d7409  Kaplumbaga-1.0-portable.zip
-88fbf9f76742f659e42dafc0554974699bd4e5fe82694fd1704df1c734dcfec9  Kaplumbaga-Setup-1.0.exe
+744b8fbe271f5beeb39ef91b4c9d2269bcb58d2d490c1d8d40e8fff9997ac8e9  Kaplumbaga-1.1-portable.zip
+e1f558540e719d30031abf52538efe8750d6b254bf5e74b2da80702227534be0  Kaplumbaga-Setup-1.1.exe

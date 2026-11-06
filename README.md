@@ -1,19 +1,20 @@
 <p align="center"><img src="logo.png" width="96" alt="Kaplumbağa"></p>
 
 <h1 align="center">Kaplumbağa – Sınav Oturma Planı</h1>
-<p align="center"><b>Exam Seating Plan</b> · v1.0 · Windows 7 / 8 / 10 / 11 · Ücretsiz / Free</p>
+<p align="center"><b>Exam Seating Plan</b> · v1.1 · Windows 7 / 8 / 10 / 11 · Ücretsiz / Free</p>
+<p align="center">A project of <b>ULUSLARARASI GAZİANTEP AİHL</b> · Made by OAS</p>
 
 <p align="center">
-  <a href="Kaplumbaga-Setup-1.0.exe"><b>⬇ Kurulum / Installer</b></a> (2.1 MB) &nbsp;·&nbsp;
-  <a href="Kaplumbaga-1.0-portable.zip"><b>⬇ Taşınabilir / Portable .zip</b></a> (124 KB)
+  <a href="Kaplumbaga-Setup-1.1.exe"><b>⬇ Kurulum / Installer</b></a> (2.1 MB) &nbsp;·&nbsp;
+  <a href="Kaplumbaga-1.1-portable.zip"><b>⬇ Taşınabilir / Portable .zip</b></a> (126 KB)
 </p>
 
 ![Kaplumbağa](plan_tr.png)
 
 ## Türkçe
 
-Ortak sınavlar için **derslik oturma planı** ve **sınıf listelerini** dakikalar içinde hazırlayan küçük, ücretsiz bir program.
-Reklam yok, internet gerekmez; veriler bilgisayarınızda kalır.
+Ortak sınavlar için **derslik oturma planı** ve **sınıf listelerini** hazırlayan küçük, ücretsiz bir program.
+Reklamsız ve internet gerekmez
 
 - Öğrencileri **Excel (.xlsx, .xls), CSV ve e-Okul** listelerinden alır.
 - **Aynı sınava, sınıfa veya seviyeye** giren öğrencileri yan yana ve önlü-arkalı oturtmaz.
@@ -29,8 +30,8 @@ Reklam yok, internet gerekmez; veriler bilgisayarınızda kalır.
 
 ## English
 
-A small free tool that builds **exam seating plans** and **class lists** for school exams in minutes.
-No ads, works offline; your data stays on your computer.
+A small free tool that builds **exam seating plans** and **class lists** for school exams.
+No ads and works offline
 
 - Imports students from **Excel (.xlsx, .xls), CSV and Turkish e-Okul** lists.
 - Keeps students with the **same exam, class or grade** apart — side by side and front/back.
@@ -51,12 +52,14 @@ In the portable version keep `Kaplumbaga.exe` and `Kaplumbaga.exe.config` togeth
 
 **SHA-256**
 ```
-88fbf9f76742f659e42dafc0554974699bd4e5fe82694fd1704df1c734dcfec9  Kaplumbaga-Setup-1.0.exe
-4faa7ad171bd54c6ddc9fa4879775b101e51c3cc4e4c5b40f49529996b3d7409  Kaplumbaga-1.0-portable.zip
+e1f558540e719d30031abf52538efe8750d6b254bf5e74b2da80702227534be0  Kaplumbaga-Setup-1.1.exe
+744b8fbe271f5beeb39ef91b4c9d2269bcb58d2d490c1d8d40e8fff9997ac8e9  Kaplumbaga-1.1-portable.zip
 ```
 
 ## İletişim / Contact
 
 kaplumbaga.app@gmail.com
 
-Made by **OAS** · © 2026 · [MIT License](LICENSE.txt)
+A project of **ULUSLARARASI GAZİANTEP AİHL** · Made by **OAS**  
+ULUSLARARASI GAZİANTEP AİHL projesidir · OAS tarafından yapıldı  
+© 2026 ULUSLARARASI GAZİANTEP AİHL · [MIT License](LICENSE.txt)
